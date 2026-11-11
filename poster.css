@@ -1,0 +1,140 @@
+/*!
+ * crootss themes: poster
+ * https://github.com/crootss/themes
+ *
+ * Blok warna penuh, huruf grotesk tebal raksasa, stiker dan bentuk geometris,
+ * tekstur kertas matte. Inspirasi: tren Canva 2026 "Block Party" (warna hangat
+ * bernuansa vintage) dan "Zinegeist" (zine DIY, tipografi besar yang brutal).
+ */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=JetBrains+Mono:wght@400;700&display=swap");
+@import "./base.css";
+
+:root {
+  --th-page: #e8e0d0;
+  --th-page-image: radial-gradient(rgba(23, 20, 15, .16) 1.5px, transparent 1.6px);
+  --th-fg: #17140f;
+  --th-display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --th-display-weight: 800;
+  --th-display-tracking: -.035em;
+  --th-text: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --th-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --th-radius: 6px;
+  --th-shadow: 0 40px 90px -30px rgba(23, 20, 15, .55);
+  /* Butiran kertas: noise SVG tipis di atas warna slide */
+  --th-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --th-accent: #ff5a36;
+
+  --th-s1: #ff5a36; --th-on-1: #17140f;  /* tomat */
+  --th-s2: #fffaf0; --th-on-2: #17140f;  /* krem */
+  --th-s3: #2c46ef; --th-on-3: #fffaf0;  /* kobalt */
+  --th-s4: #ffc83d; --th-on-4: #17140f;  /* kuning */
+  --th-s5: #b7e8cf; --th-on-5: #17140f;  /* mint */
+  --th-s6: #ffb8cb; --th-on-6: #17140f;  /* pink */
+  --th-s7: #cdbfff; --th-on-7: #17140f;  /* lilac */
+  --th-s8: #17140f; --th-on-8: #fffaf0;  /* tinta */
+
+  --th-panel: #17140f;
+  --th-on-panel: #fffaf0;
+  --th-panel-accent: #ffc83d;
+  --th-btn: #17140f;
+  --th-on-btn: #fffaf0;
+}
+
+body { background-size: 26px 26px; }
+
+/* Sorotan kontras di setiap warna */
+.t-1 .hl { color: #fffaf0; }
+.t-4 .hl, .t-5 .hl, .t-6 .hl, .t-7 .hl { color: #2c46ef; }
+.t-8 .hl { color: #ffc83d; }
+.t-3 .eyebrow b { color: #ffc83d; }
+
+.btn { box-shadow: 6px 6px 0 rgba(23, 20, 15, .25); transition: transform .15s, box-shadow .15s; }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 rgba(23, 20, 15, .3); }
+.btn.ghost { box-shadow: none; }
+.t-8 .btn, .t-3 .btn { --th-btn: #fffaf0; --th-on-btn: #17140f; }
+
+.panel { box-shadow: 10px 10px 0 rgba(23, 20, 15, .25); }
+.t-2 .panel { box-shadow: 10px 10px 0 #ff5a36; }
+/* Panel tinta di atas slide tinta: beri bingkai supaya tetap terlihat */
+.t-8 .panel { box-shadow: none; border: 2px solid rgba(255, 250, 240, .2); }
+.sticker { background: #ffc83d; color: #17140f; }
+
+/* Sampul: lingkaran krem dan persegi kobalt di kanan */
+.cover::before, .cover::after { content: ""; position: absolute; pointer-events: none; }
+.cover::before {
+  right: -170px;
+  bottom: -230px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: #fffaf0;
+}
+.cover::after {
+  right: 300px;
+  top: 90px;
+  width: 140px;
+  height: 140px;
+  background: #2c46ef;
+  transform: rotate(18deg);
+}
+.cover h1 .hl { color: #fffaf0; }
+
+/* Pernyataan tengah: setengah lingkaran di sudut */
+.center::before {
+  content: "";
+  position: absolute;
+  left: -60px;
+  bottom: -60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: #ff5a36;
+}
+.center.t-1::before { background: #ffc83d; }
+
+/* Split: cincin tipis di belakang teks */
+.split::after {
+  content: "";
+  position: absolute;
+  left: -120px;
+  bottom: -120px;
+  width: 300px;
+  height: 300px;
+  border: 40px solid color-mix(in srgb, currentColor 12%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Angka/statistik besar: lingkaran kontras di pojok kanan atas */
+.slide:not(.split):has(.mega)::after {
+  content: "";
+  position: absolute;
+  left: auto;
+  bottom: auto;
+  border: 0;
+  right: -80px;
+  top: -80px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: #ff5a36;
+}
+.t-1:not(.split):has(.mega)::after { background: #2c46ef; }
+
+/* Kertas miring untuk kode, dengan bayangan solid */
+.paper {
+  position: relative;
+  padding: 44px 40px;
+  background: #fffaf0;
+  color: #17140f;
+  transform: rotate(-2.5deg);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, .25);
+}
+.key { background: #fffaf0; color: #17140f; border-color: #17140f; }
+
+.croot-node.window { border: 4px solid #17140f; }
+
+@media (max-width: 640px) {
+  .cover::before { right: -260px; bottom: -220px; }
+  .cover::after { right: 60px; top: 150px; }
+}

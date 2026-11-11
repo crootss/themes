@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>crootss themes | Demo</title>
+  <meta name="description" content="Demo tema crootss: poster, gelap, dan minimal. Satu HTML, tiga gaya.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.3.0/crootss.min.css">
+  <link rel="stylesheet" id="tema" href="../poster.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+
+<main class="croot-viewport" data-croot>
+  <div class="croot-stage">
+
+    <section class="croot-node slide t-1 cover" id="sampul" data-croot-step="1" aria-label="crootss themes">
+      <p class="tag">crootss themes</p>
+      <h1>Te<span class="hl">ma</span></h1>
+      <p class="lead">Satu HTML, tiga gaya. Ganti dengan satu baris CSS.</p>
+      <p class="actions">
+        <button class="btn" data-croot-target="#pakai">Lihat caranya →</button>
+        <a class="btn ghost" href="https://github.com/crootss/themes">GitHub</a>
+      </p>
+    </section>
+
+    <section class="croot-node slide t-2 split" id="pakai" data-croot-step="2" data-croot-x="2000" data-croot-z="-700" data-croot-ry="-35">
+      <div>
+        <p class="eyebrow"><b>01</b> Pakai</p>
+        <h2>Tambah satu baris.</h2>
+        <p class="sub">Muat file tema setelah <code>crootss.min.css</code>. Font ikut dimuat otomatis.</p>
+      </div>
+      <div class="paper">
+        <span class="sticker">1 baris</span>
+<pre><code>&lt;link rel="stylesheet" href=
+ "https://cdn.jsdelivr.net/gh/
+ crootss/themes@v0.1.0/<b>poster</b>.min.css"&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="croot-node slide t-4 nest" id="tiga" data-croot-step="3" data-croot-x="3800" data-croot-y="1800" data-croot-z="-1900" data-croot-ry="-55">
+      <p class="eyebrow"><b>02</b> Pilihan</p>
+      <h2>Tiga tema, tiga suasana.</h2>
+      <div class="croot-node card t-1" id="kartu-poster" data-croot-step="3.1">
+        <h3>Poster</h3>
+        <p>Blok warna, huruf raksasa, stiker. Untuk peluncuran dan kelas yang hidup.</p>
+      </div>
+      <div class="croot-node card t-8" id="kartu-gelap" data-croot-step="3.2">
+        <h3>Gelap</h3>
+        <p>Panggung gelap dan neon. Untuk talk teknis dan demo produk.</p>
+      </div>
+      <div class="croot-node card t-5" id="kartu-minimal" data-croot-step="3.3">
+        <h3>Minimal</h3>
+        <p>Serif tenang dan ruang lega. Untuk kuliah, riset, dan laporan.</p>
+      </div>
+    </section>
+
+    <section class="croot-node slide t-8 center" id="coba" data-croot-step="4" data-croot-x="3200" data-croot-y="3700" data-croot-z="-3300" data-croot-rx="12" data-croot-ry="-20">
+      <h2>Tekan tombol tema di bawah, <span class="hl">sekarang.</span></h2>
+      <p class="sub">Konten dan posisi tidak berubah. Hanya gayanya.</p>
+    </section>
+
+    <section class="croot-node slide t-3 split" id="markup" data-croot-step="5" data-croot-x="1000" data-croot-y="5000" data-croot-z="-3800" data-croot-ry="10">
+      <div>
+        <p class="eyebrow"><b>03</b> Markup</p>
+        <h2>Class yang sama di semua tema.</h2>
+        <p class="sub">Layout: <code>cover</code>, <code>split</code>, <code>center</code>, <code>cols</code>. Warna: <code>t-1</code> sampai <code>t-8</code>.</p>
+      </div>
+      <div class="panel">
+<pre><code>&lt;section class="croot-node
+  <b>slide t-3 split</b>"
+  data-croot-step="5"&gt;
+  &lt;div&gt;
+    &lt;p class="<b>eyebrow</b>"&gt;…&lt;/p&gt;
+    &lt;h2&gt;Judul&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class="<b>panel</b>"&gt;…&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="croot-node slide t-5 split" id="warna" data-croot-step="6" data-croot-x="-1000" data-croot-y="3900" data-croot-z="-2900" data-croot-ry="40" data-croot-rz="-3">
+      <div>
+        <p class="eyebrow"><b>04</b> Warna</p>
+        <p class="mega">8</p>
+        <h2>warna per tema.</h2>
+      </div>
+      <p class="swatches" aria-hidden="true"><span class="t-1"></span><span class="t-2"></span><span class="t-3"></span><span class="t-4"></span><span class="t-5"></span><span class="t-6"></span><span class="t-7"></span><span class="t-8"></span></p>
+    </section>
+
+    <section class="croot-node slide t-6" id="komponen" data-croot-step="7" data-croot-x="-2700" data-croot-y="2000" data-croot-z="-1700" data-croot-rx="-10" data-croot-ry="55">
+      <p class="eyebrow"><b>05</b> Komponen</p>
+      <h2>Siap pakai.</h2>
+      <table>
+        <tr><td><code>eyebrow</code></td><td>Label bab dengan nomor</td></tr>
+        <tr><td><code>panel · paper</code></td><td>Kotak kode atau kutipan</td></tr>
+        <tr><td><code>btn · tag · sticker</code></td><td>Tombol, label, stiker miring</td></tr>
+        <tr><td><code>card · window</code></td><td>Node anak yang bisa di-zoom</td></tr>
+      </table>
+    </section>
+
+    <section class="croot-node slide t-7" id="navigasi" data-croot-step="8" data-croot-x="-3000" data-croot-z="-500" data-croot-ry="35">
+      <p class="eyebrow"><b>06</b> Navigasi</p>
+      <h2>Tiga cara bergerak.</h2>
+      <div class="cols">
+        <div><span class="key">→</span><p><b>Linier</b><br>Panah, Spasi, atau swipe.</p></div>
+        <div><span class="key">Klik</span><p><b>Langsung</b><br>Klik slide mana pun.</p></div>
+        <div><span class="key">Esc</span><p><b>Overview</b><br>Lihat seluruh ruang.</p></div>
+      </div>
+    </section>
+
+    <section class="croot-node slide t-2 center" id="selesai" data-croot-step="9" data-croot-x="-1900" data-croot-y="-1900" data-croot-z="100" data-croot-rx="18" data-croot-ry="20">
+      <h2>Pilih gaya, <span class="hl">tulis ceritamu.</span></h2>
+      <p class="sub">Open source, GPL-3.0.</p>
+      <p class="actions"><button class="btn" data-croot-target="#sampul">↺ Kembali ke awal</button></p>
+    </section>
+
+  </div>
+</main>
+
+<nav class="hud" aria-label="Navigasi dan tema">
+  <button class="hud-btn" data-act="prev" aria-label="Sebelumnya">←</button>
+  <span class="hud-pos" aria-hidden="true"></span>
+  <button class="hud-btn" data-act="next" aria-label="Berikutnya">→</button>
+  <button class="hud-btn" data-tema="poster" aria-pressed="true">Poster</button>
+  <button class="hud-btn" data-tema="gelap" aria-pressed="false">Gelap</button>
+  <button class="hud-btn" data-tema="minimal" aria-pressed="false">Minimal</button>
+</nav>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

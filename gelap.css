@@ -1,0 +1,134 @@
+/*!
+ * crootss themes: gelap
+ * https://github.com/crootss/themes
+ *
+ * Panggung gelap dengan sorot lampu, aksen neon lime/magenta, label monospace
+ * ala antarmuka retro-tech, dan butiran film. Inspirasi: tren Canva 2026
+ * "Drama Club" (sinematik, spotlight) dan "Prompt Playground" (fragmen UI,
+ * nostalgia internet awal).
+ */
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap");
+@import "./base.css";
+
+:root {
+  --th-page: #050507;
+  --th-page-image:
+    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+  --th-fg: #f2f2f5;
+  --th-display: "Syne", "Arial Black", system-ui, sans-serif;
+  --th-display-weight: 800;
+  --th-display-tracking: -.03em;
+  --th-display-leading: 1;
+  --th-text: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --th-mono: "Space Mono", ui-monospace, Menlo, Consolas, monospace;
+  --th-radius: 10px;
+  --th-shadow: 0 0 0 1px rgba(255, 255, 255, .09), 0 50px 120px -40px rgba(0, 0, 0, .95);
+  /* Sorot lampu dari atas + butiran film */
+  --th-texture:
+    radial-gradient(ellipse 70% 60% at 72% -12%, rgba(255, 255, 255, .16), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --th-accent: #d4ff3a;
+
+  --th-s1: #0b0b10; --th-on-1: #f2f2f5;  /* panggung */
+  --th-s2: #16161f; --th-on-2: #f2f2f5;  /* grafit */
+  --th-s3: #d4ff3a; --th-on-3: #0b0b10;  /* lime */
+  --th-s4: #ff3d9a; --th-on-4: #0b0b10;  /* magenta */
+  --th-s5: #3346ff; --th-on-5: #f2f2f5;  /* biru listrik */
+  --th-s6: #24103f; --th-on-6: #f2f2f5;  /* ungu malam */
+  --th-s7: #ff8a00; --th-on-7: #0b0b10;  /* amber */
+  --th-s8: #000000; --th-on-8: #f2f2f5;  /* hitam pekat */
+
+  --th-panel: #000;
+  --th-on-panel: #e8e8ee;
+  --th-panel-accent: #d4ff3a;
+  --th-btn: #d4ff3a;
+  --th-on-btn: #0b0b10;
+}
+
+body { background-size: 48px 48px; }
+.croot-viewport { --croot-dim: .4; }
+
+/* Bingkai tipis dengan tanda sudut, seperti viewfinder kamera */
+.croot-node.slide::before {
+  content: "";
+  position: absolute;
+  inset: 26px;
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Label monospace: [01] KENAPA */
+.eyebrow { font-family: var(--th-mono); font-weight: 400; letter-spacing: .2em; }
+.eyebrow b { display: inline; min-width: 0; height: auto; border: 0; color: var(--th-accent); }
+.eyebrow b::before { content: "["; }
+.eyebrow b::after { content: "]"; }
+:is(.t-3, .t-4, .t-7) .eyebrow b { color: inherit; }
+.tag { font-family: var(--th-mono); font-weight: 400; border-width: 1px; letter-spacing: .08em; }
+
+/* Sorotan: gradien neon pada teks */
+.hl {
+  background: linear-gradient(90deg, #d4ff3a, #3de0ff 55%, #ff3d9a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+:is(.t-3, .t-4, .t-7) .hl { background: none; color: inherit; text-decoration: underline 8px; text-underline-offset: 10px; }
+
+.btn {
+  border-radius: 999px;
+  border-width: 2px;
+  box-shadow: 0 0 36px -4px rgba(212, 255, 58, .55);
+  transition: box-shadow .2s;
+}
+.btn:hover { box-shadow: 0 0 52px 0 rgba(212, 255, 58, .75); }
+.btn.ghost { box-shadow: none; }
+:is(.t-3, .t-4, .t-7) .btn { --th-btn: #0b0b10; --th-on-btn: #f2f2f5; box-shadow: none; }
+
+.panel { border: 1px solid rgba(212, 255, 58, .25); box-shadow: 0 0 60px -20px rgba(212, 255, 58, .35); }
+pre { color: #cfd2dc; }
+.sticker { background: #ff3d9a; color: #0b0b10; font-family: var(--th-mono); font-size: 22px; border-radius: 999px; width: auto; height: auto; padding: 14px 22px; }
+.paper {
+  position: relative;
+  padding: 44px 40px;
+  border: 1px solid rgba(212, 255, 58, .35);
+  border-radius: 14px;
+  background: #000;
+  color: #d4ff3a;
+}
+.key { border-width: 2px; border-bottom-width: 8px; color: var(--th-accent); background: rgba(212, 255, 58, .06); font-family: var(--th-mono); }
+:is(.t-3, .t-4, .t-7) .key { color: inherit; background: transparent; }
+
+/* Sampul: lampu "REC" dan cahaya neon dari bawah */
+.cover h1 { font-size: 190px; }
+.cover::after {
+  content: "● REC  00:00:01";
+  position: absolute;
+  right: 64px;
+  top: 52px;
+  font: 400 20px var(--th-mono);
+  letter-spacing: .12em;
+  color: #ff3d5a;
+}
+.cover { background:
+  radial-gradient(ellipse 60% 70% at 85% 115%, rgba(212, 255, 58, .32), transparent 70%),
+  radial-gradient(ellipse 50% 60% at 105% 40%, rgba(255, 61, 154, .22), transparent 70%),
+  var(--th-texture), var(--surface, var(--th-s1)); }
+
+/* Syne lebar: judul sedikit lebih kecil supaya tidak terlalu banyak baris */
+h2 { font-size: 70px; max-width: 17ch; }
+.split h2 { font-size: 62px; }
+.center h2 { font-size: 92px; max-width: 15ch; }
+.croot-node.card h3 { font-size: 120px; }
+.mega { font-size: 230px; }
+
+.croot-node.window { border: 1px solid rgba(255, 255, 255, .14); }
+.window .chrome { background: #1b1b24; }
+
+@media (max-width: 640px) {
+  .cover h1 { font-size: 140px; }
+  .mega { font-size: 150px; }
+  h2, .split h2 { font-size: 62px; }
+  .center h2 { font-size: 70px; }
+}

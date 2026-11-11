@@ -1,0 +1,20 @@
+/* Posisi kartu anak di slide "Tiga tema" (desktop dan ponsel berbeda). */
+#kartu-poster  { --croot-x: -410; --croot-y: 150; --croot-scale: .28; }
+#kartu-gelap   { --croot-x: 0;    --croot-y: 150; --croot-scale: .28; }
+#kartu-minimal { --croot-x: 410;  --croot-y: 150; --croot-scale: .28; }
+
+/* Contoh 8 warna permukaan */
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 0; }
+.swatches span {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 25%, transparent);
+}
+
+@media (max-width: 640px) {
+  #tiga { height: 1500px; }
+  #kartu-poster  { --croot-x: 0; --croot-y: -90;  --croot-scale: .36; }
+  #kartu-gelap   { --croot-x: 0; --croot-y: 190;  --croot-scale: .36; }
+  #kartu-minimal { --croot-x: 0; --croot-y: 470;  --croot-scale: .36; }
+}

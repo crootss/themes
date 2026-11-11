@@ -1,0 +1,330 @@
+/*!
+ * crootss themes: base
+ * https://github.com/crootss/themes
+ *
+ * Layout dan komponen bersama semua tema. Jangan dimuat sendirian: setiap
+ * file tema (poster.css, gelap.css, minimal.css) mengimpornya dan mengisi
+ * token --th-* di :root. Muat setelah crootss.css.
+ *
+ * Slide: 1280×720 (16:9) di desktop, 720×1280 (9:16) di layar ≤640px.
+ */
+
+/* ---------- Token default (ditimpa tema) ---------- */
+:root {
+  --th-page: #eee;
+  --th-page-image: none;
+  --th-fg: #111;
+  --th-display: system-ui, sans-serif;
+  --th-display-weight: 800;
+  --th-display-tracking: -.03em;
+  --th-display-leading: .98;
+  --th-text: system-ui, sans-serif;
+  --th-mono: ui-monospace, Menlo, Consolas, monospace;
+  --th-radius: 6px;
+  --th-shadow: 0 40px 90px -30px rgba(0, 0, 0, .5);
+  --th-texture: none;
+  --th-accent: #e33;
+
+  --th-s1: #fff; --th-on-1: #111;
+  --th-s2: #fff; --th-on-2: #111;
+  --th-s3: #fff; --th-on-3: #111;
+  --th-s4: #fff; --th-on-4: #111;
+  --th-s5: #fff; --th-on-5: #111;
+  --th-s6: #fff; --th-on-6: #111;
+  --th-s7: #fff; --th-on-7: #111;
+  --th-s8: #111; --th-on-8: #fff;
+
+  --th-panel: #111;
+  --th-on-panel: #fff;
+  --th-panel-accent: #fc3;
+  --th-btn: #111;
+  --th-on-btn: #fff;
+}
+
+/* Tetangga cukup terlihat: dari sanalah rasa ruang 3D muncul. */
+.croot-viewport {
+  --croot-node-width: 1280px;
+  --croot-dim: .5;
+  --croot-speed: 1.4s;
+  --croot-perspective: 1400px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--th-page);
+  background-image: var(--th-page-image);
+  color: var(--th-fg);
+  font: 30px/1.4 var(--th-text);
+}
+* { box-sizing: border-box; }
+
+/* ---------- Slide ---------- */
+.croot-node.slide {
+  height: 720px;
+  padding: 72px 80px;
+  border-radius: var(--th-radius);
+  background: var(--th-texture), var(--surface, var(--th-s1));
+  color: var(--on, var(--th-on-1));
+  box-shadow: var(--th-shadow);
+}
+.croot-node.slide.tall { height: 900px; }
+/* Slide daun memotong dekorasi di tepinya. Slide yang punya anak tidak boleh
+   overflow:hidden karena itu meratakan (flatten) preserve-3d anaknya. */
+.croot-node.slide:not(:has(.croot-node)) { overflow: hidden; }
+
+.t-1 { --surface: var(--th-s1); --on: var(--th-on-1); }
+.t-2 { --surface: var(--th-s2); --on: var(--th-on-2); }
+.t-3 { --surface: var(--th-s3); --on: var(--th-on-3); }
+.t-4 { --surface: var(--th-s4); --on: var(--th-on-4); }
+.t-5 { --surface: var(--th-s5); --on: var(--th-on-5); }
+.t-6 { --surface: var(--th-s6); --on: var(--th-on-6); }
+.t-7 { --surface: var(--th-s7); --on: var(--th-on-7); }
+.t-8 { --surface: var(--th-s8); --on: var(--th-on-8); }
+
+/* ---------- Tipografi ---------- */
+h1, h2, h3, .big, .mega {
+  margin: 0;
+  font-family: var(--th-display);
+  font-weight: var(--th-display-weight);
+  letter-spacing: var(--th-display-tracking);
+  line-height: var(--th-display-leading);
+}
+h1 { font-size: 220px; }
+h2 { font-size: 84px; max-width: 15ch; margin-bottom: 24px; }
+h3 { font-size: 60px; margin-bottom: 20px; }
+.big { font-size: 220px; margin-bottom: 32px; }
+.mega { font-size: 260px; margin-bottom: 24px; }
+p { margin: 0 0 .6em; }
+.lead { font-size: 40px; line-height: 1.2; max-width: 20ch; }
+.sub { font-size: 32px; max-width: 32ch; opacity: .85; }
+.hl { color: var(--th-accent); }
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.eyebrow b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 56px;
+  height: 56px;
+  border: 3px solid currentColor;
+  border-radius: 999px;
+  letter-spacing: 0;
+}
+.tag {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 3px solid currentColor;
+  border-radius: 999px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+code, kbd, pre { font-family: var(--th-mono); }
+code { font-size: .85em; }
+kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: .05em .4em;
+  border: 3px solid currentColor;
+  border-bottom-width: 6px;
+  border-radius: 10px;
+  font-size: .75em;
+  line-height: 1.3;
+  text-align: center;
+}
+pre { margin: 0; font-size: 22px; line-height: 1.5; white-space: pre; }
+pre code { font-size: 1em; }
+pre b { color: var(--th-panel-accent); font-weight: 700; }
+
+table { width: 100%; border-collapse: collapse; font-size: 28px; }
+td, th { padding: 14px 0; border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent); text-align: left; vertical-align: top; }
+td:first-child, th:first-child { width: 30%; }
+
+/* ---------- Komponen ---------- */
+.actions { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 36px; }
+.btn {
+  display: inline-block;
+  font: 700 28px/1 var(--th-text);
+  padding: 22px 34px;
+  border: 4px solid var(--th-btn);
+  border-radius: 14px;
+  background: var(--th-btn);
+  color: var(--th-on-btn);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.ghost { background: transparent; color: inherit; border-color: currentColor; }
+
+/* Kotak gelap untuk kode atau kutipan */
+.panel {
+  padding: 36px 40px;
+  border-radius: calc(var(--th-radius) * 2 + 6px);
+  background: var(--th-panel);
+  color: var(--th-on-panel);
+}
+
+/* Label kecil yang ditempel miring di sudut elemen (position: relative) */
+.sticker {
+  position: absolute;
+  right: -30px;
+  top: -54px;
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--th-accent);
+  color: var(--th-on-btn);
+  font: 800 26px/1 var(--th-display);
+  text-align: center;
+  transform: rotate(14deg);
+}
+
+/* Tombol keyboard besar */
+.key {
+  display: grid;
+  place-items: center;
+  height: 150px;
+  margin-bottom: 28px;
+  border: 5px solid currentColor;
+  border-bottom-width: 16px;
+  border-radius: 24px;
+  font: var(--th-display-weight) 64px/1 var(--th-display);
+}
+
+/* Kartu anak (node bersarang yang bisa di-zoom) dan jendela aplikasi */
+.croot-node.card, .croot-node.window {
+  width: 1280px;
+  height: 720px;
+  border-radius: calc(var(--th-radius) * 3 + 6px);
+  overflow: hidden;
+  background: var(--surface, var(--th-s1));
+  color: var(--on, var(--th-on-1));
+}
+.croot-node.card { padding: 80px 96px; font-size: 50px; line-height: 1.25; }
+.croot-node.card h3 { font-size: 150px; margin-bottom: 48px; }
+.croot-node.window { padding: 0 64px 56px; font-size: 30px; }
+/* Anak sedikit di depan induknya: anak yang sebidang dengan induk yang
+   diputar bisa tergambar di belakang background induk. */
+.slide > .croot-node { --croot-z: 2; }
+.window .chrome {
+  display: flex;
+  gap: 14px;
+  margin: 0 -64px 40px;
+  padding: 22px 28px;
+  background: var(--th-panel);
+}
+.window .chrome i { width: 22px; height: 22px; border-radius: 50%; background: var(--th-s1); }
+.window .chrome i:nth-child(1) { background: #ff5f57; }
+.window .chrome i:nth-child(2) { background: #febc2e; }
+.window .chrome i:nth-child(3) { background: #28c840; }
+.window pre { padding: 24px 28px; border-radius: 14px; background: var(--th-panel); color: var(--th-on-panel); }
+
+/* ---------- Layout ---------- */
+/* Sampul: judul besar di kiri */
+.cover h1 { margin: 40px 0 8px -8px; }
+.cover .lead { margin-top: 16px; }
+
+/* Dua kolom: teks + panel/gambar */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 56px;
+  align-items: center;
+}
+.split h2 { font-size: 76px; }
+
+/* Satu pernyataan di tengah */
+.center {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.center h2 { font-size: 110px; max-width: 13ch; }
+.center .sub, .center .lead { max-width: 36ch; }
+
+/* Kolom sejajar (2–4) */
+.cols { display: grid; grid-auto-columns: 1fr; grid-auto-flow: column; gap: 40px; margin-top: 40px; }
+.cols p { font-size: 26px; line-height: 1.35; }
+.cols b { font-family: var(--th-display); font-size: 36px; }
+
+/* ---------- HUD navigasi (opsional) ---------- */
+.hud {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 999px;
+  background: var(--th-panel);
+  color: var(--th-on-panel);
+  font: 700 14px var(--th-text);
+  transform: translateX(-50%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+}
+.hud-btn {
+  font: inherit;
+  min-width: 44px;
+  min-height: 40px;
+  padding: 6px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.hud-btn:hover, .hud-btn:focus-visible { background: color-mix(in srgb, currentColor 15%, transparent); outline: none; }
+.hud-btn.on, .hud-btn[aria-pressed="true"] { background: var(--th-accent); color: var(--th-on-btn); }
+.hud-pos { min-width: 56px; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* ---------- Ponsel: slide potret 9:16 ---------- */
+@media (max-width: 640px) {
+  .croot-viewport { --croot-node-width: 720px; }
+  .croot-node.slide { height: 1280px; padding: 72px 64px; }
+  .croot-node.slide.tall { height: 1800px; }
+  h1 { font-size: 170px; }
+  h2, .split h2 { font-size: 80px; }
+  .center h2 { font-size: 92px; }
+  .mega { font-size: 170px; }
+  .cover h1 { margin-top: 160px; }
+  .cover .lead { font-size: 48px; }
+  .split { grid-template-columns: 1fr; align-content: center; gap: 48px; }
+  .cols { grid-auto-flow: row; gap: 24px; }
+  /* Tombol keyboard di samping teksnya supaya tiga baris muat */
+  .cols > div:has(.key) { display: grid; grid-template-columns: 170px 1fr; gap: 28px; align-items: center; }
+  .cols .key { height: 130px; margin: 0; font-size: 48px; }
+  td { display: block; width: auto !important; padding: 4px 0; border: 0; }
+  tr { display: block; padding: 14px 0; border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent); }
+  .hud { font-size: 13px; }
+}
+
+/* ---------- Tanpa JS: dokumen biasa ---------- */
+.croot-viewport:not(.croot-ready) { padding: 16px; font-size: 18px; }
+.croot-viewport:not(.croot-ready) .croot-node {
+  position: relative;
+  height: auto !important;
+  width: auto !important;
+  margin: 1em auto;
+  padding: 1.2em !important;
+  font-size: 1em;
+}
+.croot-viewport:not(.croot-ready) .split { display: block; }
+.croot-viewport:not(.croot-ready) .cols { display: block; }
+.croot-viewport:not(.croot-ready) h1 { font-size: 3em; }
+.croot-viewport:not(.croot-ready) :is(h2, .big, .mega) { font-size: 2em; }
+.croot-viewport:not(.croot-ready) pre { white-space: pre-wrap; font-size: .8em; }
+.croot-viewport:not(.croot-ready) .croot-node::before,
+.croot-viewport:not(.croot-ready) .croot-node::after { display: none; }
+.croot-viewport:not(.croot-ready) ~ .hud { display: none; }

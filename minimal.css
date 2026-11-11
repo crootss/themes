@@ -1,0 +1,134 @@
+/*!
+ * crootss themes: minimal
+ * https://github.com/crootss/themes
+ *
+ * Editorial yang tenang: serif tipis berukuran besar, banyak ruang kosong,
+ * garis rambut, warna netral hangat dengan satu aksen terakota. Inspirasi:
+ * tren Canva 2026 "Opt-Out Era" (layout bersih, font serif, branding
+ * sederhana) dan "Explorecore" (tata letak tenang ala zine dan Substack).
+ */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;600&display=swap");
+@import "./base.css";
+
+:root {
+  --th-page: #e9e5dd;
+  --th-fg: #1f1d1a;
+  --th-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --th-display-weight: 400;
+  --th-display-tracking: -.02em;
+  --th-display-leading: 1;
+  --th-text: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --th-mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+  --th-radius: 2px;
+  --th-shadow: 0 0 0 1px rgba(31, 29, 26, .06), 0 30px 70px -36px rgba(31, 29, 26, .35);
+  --th-accent: #a8482a;
+
+  --th-s1: #fbf9f5; --th-on-1: #1f1d1a;  /* kertas */
+  --th-s2: #f1ece3; --th-on-2: #1f1d1a;  /* pasir */
+  --th-s3: #1f1d1a; --th-on-3: #f6f2ea;  /* tinta */
+  --th-s4: #dfe4d6; --th-on-4: #1f1d1a;  /* sage */
+  --th-s5: #ecd9cb; --th-on-5: #1f1d1a;  /* tanah liat */
+  --th-s6: #ffffff; --th-on-6: #1f1d1a;  /* putih */
+  --th-s7: #e3e1ec; --th-on-7: #1f1d1a;  /* kabut */
+  --th-s8: #a8482a; --th-on-8: #fbf9f5;  /* terakota */
+
+  --th-panel: #1f1d1a;
+  --th-on-panel: #f1ece3;
+  --th-panel-accent: #e3a184;
+  --th-btn: #1f1d1a;
+  --th-on-btn: #fbf9f5;
+}
+
+.croot-viewport { --croot-dim: .6; --croot-speed: 1.6s; }
+
+body { font-weight: 400; }
+.sub { opacity: .75; }
+h2 { font-size: 92px; }
+.split h2 { font-size: 84px; }
+.mega { font-size: 280px; }
+
+/* Sorotan: miring, warna aksen */
+.hl { font-style: italic; color: var(--th-accent); }
+.t-3 .hl, .t-8 .hl { color: #e3a184; }
+.t-8 .hl { color: #fbf9f5; text-decoration: underline 2px; text-underline-offset: 8px; }
+
+/* Label dengan garis rambut sampai tepi: 01 — KENAPA ———— */
+.eyebrow { font-weight: 500; font-size: 20px; letter-spacing: .18em; }
+.eyebrow b { min-width: 0; height: auto; border: 0; font: italic 400 34px/1 var(--th-display); letter-spacing: 0; }
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: .25; }
+.tag { border-width: 1px; font-weight: 500; letter-spacing: .06em; }
+
+/* Garis kaki halaman, seperti majalah */
+.croot-node.slide:not(.center)::after {
+  content: "";
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  bottom: 44px;
+  height: 1px;
+  background: currentColor;
+  opacity: .15;
+}
+
+.btn { font-weight: 500; border-width: 1.5px; border-radius: 999px; padding: 20px 34px; }
+.btn:hover { background: var(--th-accent); border-color: var(--th-accent); }
+.btn.ghost:hover { background: transparent; color: var(--th-accent); }
+.t-3 .btn, .t-8 .btn { --th-btn: #fbf9f5; --th-on-btn: #1f1d1a; }
+
+.panel { border-radius: 4px; }
+/* Panel di atas slide gelap: sedikit lebih terang supaya tetap terlihat */
+.t-3 .panel { background: #2b2824; }
+.t-8 .panel { background: #8f3c22; }
+kbd { border-width: 1.5px; border-bottom-width: 3px; border-radius: 6px; }
+.key { border-width: 1.5px; border-bottom-width: 6px; border-radius: 14px; font-size: 72px; }
+
+/* Kartu indeks bergaris untuk kode */
+.paper {
+  position: relative;
+  padding: 48px 40px 40px 72px;
+  background:
+    linear-gradient(90deg, transparent 52px, rgba(168, 72, 42, .45) 52px, rgba(168, 72, 42, .45) 54px, transparent 54px),
+    repeating-linear-gradient(#fffdf8 0 32px, #dfe6ee 32px 33px);
+  color: #1f1d1a;
+  box-shadow: 0 20px 40px -24px rgba(31, 29, 26, .45);
+}
+.sticker {
+  background: transparent;
+  color: var(--th-accent);
+  border: 1.5px solid currentColor;
+  font: italic 400 30px/1 var(--th-display);
+}
+
+/* Sampul: lingkaran garis tipis seperti matahari terbit */
+.cover h1 { font-size: 220px; margin-top: 36px; }
+.cover .lead { font-family: var(--th-display); font-style: italic; font-size: 48px; font-weight: 400; max-width: 26ch; }
+.cover::before {
+  content: "";
+  position: absolute;
+  right: -140px;
+  top: -140px;
+  width: 560px;
+  height: 560px;
+  border: 1.5px solid var(--th-accent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Pernyataan tengah: ornamen bintang kecil di atas judul */
+.center::before {
+  content: "✳";
+  display: block;
+  margin-bottom: 24px;
+  font: 400 56px/1 var(--th-display);
+  color: var(--th-accent);
+}
+.center h2 { font-size: 112px; }
+
+.croot-node.window { border: 1px solid rgba(31, 29, 26, .18); }
+.window .chrome { background: #f1ece3; border-bottom: 1px solid rgba(31, 29, 26, .12); }
+
+@media (max-width: 640px) {
+  .cover h1 { font-size: 190px; }
+  .mega { font-size: 190px; }
+  .croot-node.slide:not(.center)::after { left: 64px; right: 64px; }
+}
