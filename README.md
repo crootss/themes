@@ -2,6 +2,8 @@
 
 Tema siap pakai untuk [crootss](https://github.com/crootss/crootss). Slide-nya HTML yang sama, gayanya cukup diganti dengan satu baris CSS.
 
+Dokumentasi: https://crootss.if.co.id/docs/tema/
+
 | Tema | Gaya | Cocok untuk | Inspirasi tren Canva 2026 |
 | :-- | :-- | :-- | :-- |
 | `poster` | Blok warna penuh, grotesk tebal raksasa, stiker, tekstur kertas | Peluncuran, kelas, pitch yang hidup | Block Party, Zinegeist |
@@ -14,7 +16,7 @@ Muat tema **setelah** `crootss.min.css`. Font Google ikut dimuat otomatis.
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.3.0/crootss.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/themes@v0.1.0/poster.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/themes@v0.2.0/poster.min.css">
 <script type="module" src="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.3.0/croot.min.js"></script>
 ```
 
