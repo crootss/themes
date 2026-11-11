@@ -109,6 +109,63 @@
       </div>
     </section>
 
+    <!-- Diagram SVG: concept map kecil. Garis tergambar dan titiknya mengalir saat slide tampil. -->
+    <section class="croot-node slide t-1 split" id="diagram" data-croot-step="8.1" data-croot-y="-4000">
+      <div>
+        <p class="eyebrow"><b>07</b> Diagram</p>
+        <h2>Big picture dulu.</h2>
+        <p class="sub">Garis, label, dan kotak SVG memakai warna tema: <code>.dg-edge</code>, <code>.dg-label</code>, <code>.dg-box</code>.</p>
+      </div>
+      <svg class="dg" viewBox="0 0 520 420" role="img" aria-label="Concept map: crootss terhubung ke tema, kamera, dan HTML">
+        <path class="dg-edge a-draw" pathLength="1" d="M260 210 L90 70"/>
+        <path class="dg-edge a-draw" pathLength="1" d="M260 210 L440 80"/>
+        <path class="dg-edge dotted a-flow" d="M260 210 L260 370"/>
+        <rect class="dg-box" x="190" y="175" width="140" height="70" rx="14"/>
+        <text x="260" y="218" text-anchor="middle" font-size="26" font-weight="700">crootss</text>
+        <rect class="dg-box" x="30" y="40" width="120" height="56" rx="12"/>
+        <text x="90" y="75" text-anchor="middle" font-size="22">Tema</text>
+        <rect class="dg-box" x="380" y="50" width="120" height="56" rx="12"/>
+        <text x="440" y="85" text-anchor="middle" font-size="22">Kamera</text>
+        <rect class="dg-box a-pulse" x="200" y="345" width="120" height="56" rx="12"/>
+        <text x="260" y="380" text-anchor="middle" font-size="22">HTML</text>
+        <g class="dg-label" transform="translate(160 130)"><rect x="-58" y="-17" width="116" height="34" rx="17"/><text font-size="17">ditata oleh</text></g>
+        <g class="dg-label" transform="translate(360 135)"><rect x="-56" y="-17" width="112" height="34" rx="17"/><text font-size="17">digerakkan</text></g>
+        <g class="dg-label" transform="translate(260 300)"><rect x="-56" y="-17" width="112" height="34" rx="17"/><text font-size="17">ditulis di</text></g>
+      </svg>
+    </section>
+
+    <!-- Business Model Canvas: setiap blok bisa di-zoom -->
+    <section class="croot-node slide t-7 bmc" id="kanvas" data-croot-step="8.2" data-croot-x="3000" data-croot-y="-4200">
+      <p class="eyebrow"><b>08</b> Business Model Canvas</p>
+      <h2>Sembilan blok, klik untuk zoom.</h2>
+      <div class="croot-node bmc-kp" id="bmc-kp" data-croot-step="8.2.7"><h3>Mitra</h3><p>jsDelivr, GitHub, komunitas.</p></div>
+      <div class="croot-node bmc-ka" id="bmc-ka" data-croot-step="8.2.6"><h3>Aktivitas</h3><p>Merawat library dan tema.</p></div>
+      <div class="croot-node bmc-kr" id="bmc-kr" data-croot-step="8.2.8"><h3>Sumber daya</h3><p>Kode open source, dokumentasi.</p></div>
+      <div class="croot-node bmc-vp" id="bmc-vp" data-croot-step="8.2.1"><h3>Nilai</h3><p>Presentasi 3D yang ringan, ramah SEO, cukup HTML.</p></div>
+      <div class="croot-node bmc-cr" id="bmc-cr" data-croot-step="8.2.3"><h3>Relasi</h3><p>Issue dan diskusi GitHub.</p></div>
+      <div class="croot-node bmc-ch" id="bmc-ch" data-croot-step="8.2.4"><h3>Kanal</h3><p>Landing, docs, llms.txt.</p></div>
+      <div class="croot-node bmc-cs" id="bmc-cs" data-croot-step="8.2.2"><h3>Pengguna</h3><p>Pengajar, developer, pembuat konten.</p></div>
+      <div class="croot-node bmc-co" id="bmc-co" data-croot-step="8.2.9"><h3>Biaya</h3><p>Waktu pengembang; hosting gratis.</p></div>
+      <div class="croot-node bmc-rv" id="bmc-rv" data-croot-step="8.2.5"><h3>Pendapatan</h3><p>Tidak ada: GPL-3.0, gratis.</p></div>
+    </section>
+
+    <!-- Alur dan garis waktu: langkah-langkahnya masuk bergiliran -->
+    <section class="croot-node slide t-5 tall" id="alur" data-croot-step="8.3" data-croot-x="-3200" data-croot-y="-4200">
+      <p class="eyebrow"><b>09</b> Alur dan waktu</p>
+      <h2>Dari ide ke panggung.</h2>
+      <ol class="flow">
+        <li><b>Peta</b>Gambar big picture.</li>
+        <li><b>Blok</b>Pecah jadi cabang.</li>
+        <li><b>Detail</b>Zoom ke tiap blok.</li>
+        <li><b>Tampil</b>Kembali ke peta.</li>
+      </ol>
+      <ol class="timeline">
+        <li><b>v0.1</b>Kamera 3D</li>
+        <li><b>v0.3</b>Pullback</li>
+        <li><b>v0.4</b>Big picture</li>
+      </ol>
+    </section>
+
     <section class="croot-node slide t-2 center" id="selesai" data-croot-step="9" data-croot-x="-1900" data-croot-y="-1900" data-croot-z="100" data-croot-rx="18" data-croot-ry="20">
       <h2>Pilih gaya, <span class="hl">tulis ceritamu.</span></h2>
       <p class="sub">Open source, GPL-3.0.</p>

@@ -67,6 +67,21 @@ Posisi node anak sebaiknya ditulis di CSS sebagai custom property supaya bisa be
 
 Kalau kamu mengatur sendiri ukuran teks raksasa, kalikan dengan `--th-wide` supaya tetap muat di tema berfont lebar: `font-size: calc(240px * var(--th-wide));`.
 
+## Diagram dan animasi
+
+Big picture presentasi biasanya berupa diagram. Semua komponen berikut murni CSS, memakai warna tema, dan tanpa JavaScript tambahan.
+
+| Class | Fungsi |
+| :-- | :-- |
+| `dg` | Pada `<svg>`: wadah diagram bebas (concept map, system context, rich picture). |
+| `dg-edge` (+`dotted`/`dashed`) | Garis/panah `<path>`; jarak titik lewat `--dg-gap`. |
+| `dg-box`, `dg-label`, `dg-head` | Kotak, label pil (`<g>` berisi `<rect>` + `<text>`), isi `<marker>` mata panah. |
+| `bmc` + `bmc-kp`…`bmc-rv` | Business Model Canvas: 9 blok node anak yang bisa di-zoom, posisinya sudah diatur (desktop dan ponsel). |
+| `flow`, `timeline` | Pada `<ol>`: alur berpanah, garis waktu. |
+| `a-draw`, `a-flow`, `a-in`, `a-float`, `a-spin`, `a-pulse`, `a-blink` | Animasi yang hanya berjalan di node aktif (`a-draw` butuh `pathLength="1"`). |
+
+Contoh lengkap ada di `demo/` (slide Diagram, Business Model Canvas, Alur dan waktu) dan di https://crootss.if.co.id/docs/big-picture/.
+
 ## Gerak
 
 Hanya slide aktif yang bergerak: isinya masuk bergiliran tepat sebelum kamera tiba, lalu `sticker`, `key`, dan dekorasi tema bergerak pelan selama slide tampil. Animasi memakai properti `translate`/`rotate`/`scale` (bukan `transform`) dan mati otomatis bila sistem meminta "kurangi gerakan". Keyframes `th-in`, `th-float`, `th-spin`, `th-wobble`, dan `th-blink` boleh dipakai ulang, misalnya `.croot-active .logo { animation: th-float 6s ease-in-out infinite; }`.

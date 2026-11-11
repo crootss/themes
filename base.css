@@ -260,6 +260,108 @@ td:first-child, th:first-child { width: 30%; }
 .cols p { font-size: 26px; line-height: 1.35; }
 .cols b { font-family: var(--th-display); font-size: 36px; }
 
+/* ---------- Diagram ----------
+   Big picture sebuah presentasi biasanya berupa diagram. Semua di bawah ini
+   murni CSS dan memakai token tema, jadi tampil konsisten di setiap tema.
+
+   1. SVG bebas (concept map, system context, rich picture):
+      <svg class="dg"> berisi <path class="dg-edge">, <rect class="dg-box">,
+      <g class="dg-label"><rect/><text/></g>. Warna dari currentColor/panel.
+   2. .bmc   Business Model Canvas: 9 blok node anak yang bisa di-zoom.
+   3. .flow  Alur/proses: <ol class="flow"><li>…</li></ol>.
+   4. .timeline  Garis waktu: <ol class="timeline"><li><b>2026</b> …</li></ol>. */
+.dg { overflow: visible; }
+.dg text { fill: currentColor; font-family: var(--th-text); }
+.dg-edge { fill: none; stroke: currentColor; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; opacity: .6; }
+/* --dg-gap: jarak antar-titik; perbesar untuk diagram berukuran besar */
+.dg-edge.dotted { stroke-dasharray: 1px var(--dg-gap, 18px); }
+.dg-edge.dashed { stroke-dasharray: 22 16; }
+.dg-head { fill: currentColor; opacity: .6; }   /* isi <marker> untuk mata panah */
+.dg-box { fill: var(--surface, var(--th-s2)); stroke: currentColor; stroke-width: 4; }
+.dg-label rect { fill: var(--th-panel); }
+.dg-label text { fill: var(--th-on-panel); font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+
+/* Business Model Canvas. Setiap blok adalah .croot-node anak berkelas bmc-*:
+   kp (mitra), ka (aktivitas), kr (sumber daya), vp (nilai), cr (relasi),
+   ch (kanal), cs (pelanggan), co (biaya), rv (pendapatan). Posisi dan ukuran
+   diatur di sini (skala .25), jadi cukup tulis isinya. */
+.slide.bmc { padding-top: 48px; }
+.slide.bmc > .eyebrow { margin-bottom: 8px; }
+.slide.bmc > h2 { font-size: 46px; max-width: none; }
+/* Skala ditulis tanpa .croot-ready: croot.js membaca --croot-* sebelum class itu dipasang */
+.bmc > .croot-node { --croot-scale: .25; }
+.croot-ready .bmc > .croot-node {
+  width: calc(var(--w) * 1px);
+  height: calc(var(--h) * 1px);
+  padding: 56px 64px;
+  overflow: hidden;
+  border: 6px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: calc(var(--th-radius) * 4);
+  background: color-mix(in srgb, currentColor 6%, var(--surface, var(--th-s1)));
+  font-size: 50px;
+  line-height: 1.3;
+}
+.bmc > .croot-node h3 { margin: 0 0 28px; font: var(--th-display-weight) calc(96px * var(--th-wide, 1))/1 var(--th-display); }
+.bmc > .croot-node p { margin: 0 0 .5em; }
+.bmc-kp { --croot-x: -484.8; --croot-y: 4;   --w: 921.6; --h: 1472; }
+.bmc-ka { --croot-x: -242.4; --croot-y: -91; --w: 921.6; --h: 712; }
+.bmc-kr { --croot-x: -242.4; --croot-y: 99;  --w: 921.6; --h: 712; }
+.bmc-vp { --croot-x: 0;      --croot-y: 4;   --w: 921.6; --h: 1472; }
+.bmc-cr { --croot-x: 242.4;  --croot-y: -91; --w: 921.6; --h: 712; }
+.bmc-ch { --croot-x: 242.4;  --croot-y: 99;  --w: 921.6; --h: 712; }
+.bmc-cs { --croot-x: 484.8;  --croot-y: 4;   --w: 921.6; --h: 1472; }
+.bmc-co { --croot-x: -303;   --croot-y: 265;  --w: 2376;  --h: 520; }
+.bmc-rv { --croot-x: 303;    --croot-y: 265;  --w: 2376;  --h: 520; }
+.bmc-vp { background: color-mix(in srgb, var(--th-accent) 22%, var(--surface, var(--th-s1))); }
+
+/* Alur: kotak berurutan dengan panah di antaranya */
+.flow { display: flex; gap: 56px; margin: 40px 0 0; padding: 0; list-style: none; counter-reset: flow; }
+.flow > li {
+  position: relative;
+  flex: 1;
+  padding: 28px 28px 32px;
+  border-radius: calc(var(--th-radius) * 2);
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  font-size: 24px;
+  line-height: 1.35;
+  counter-increment: flow;
+}
+.flow > li::before { content: counter(flow, decimal-leading-zero); display: block; margin-bottom: 10px; font: 700 18px var(--th-mono); opacity: .6; }
+.flow > li b { display: block; margin-bottom: 6px; font: var(--th-display-weight) 32px/1.1 var(--th-display); }
+.flow > li:not(:last-child)::after { content: "→"; position: absolute; right: -46px; top: 50%; translate: 0 -50%; font: 700 34px var(--th-text); opacity: .6; }
+
+/* Garis waktu: titik di atas garis horizontal */
+.timeline { display: grid; grid-auto-columns: 1fr; grid-auto-flow: column; gap: 32px; margin: 56px 0 0; padding: 0; list-style: none; }
+.timeline > li { position: relative; padding-top: 44px; border-top: 4px solid color-mix(in srgb, currentColor 30%, transparent); font-size: 24px; line-height: 1.35; }
+.timeline > li::before { content: ""; position: absolute; left: 0; top: -14px; width: 24px; height: 24px; border-radius: 50%; background: var(--th-accent); }
+.timeline > li b { display: block; margin-bottom: 6px; font: var(--th-display-weight) 40px/1 var(--th-display); }
+
+/* ---------- Animasi (kelas utilitas a-*) ----------
+   Hanya berjalan di node aktif (bisa slide, kartu, atau node big picture) dan
+   dimatikan oleh prefers-reduced-motion.
+   a-draw  garis SVG tergambar (beri path atribut pathLength="1")
+   a-flow  titik-titik garis .dg-edge.dotted mengalir
+   a-in    masuk memudar (urutan lewat style custom property --i: 0,1,2…
+           di CSS-mu, atau otomatis untuk anak .flow/.timeline)
+   a-float, a-spin, a-pulse, a-blink  gerak kecil berulang */
+@keyframes th-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes th-flow { to { stroke-dashoffset: calc((var(--dg-gap, 18px) + 1px) * -2); } }
+@keyframes th-pulse { 50% { scale: 1.08; } }
+.croot-ready .croot-active .a-draw, .croot-ready .croot-active.a-draw { stroke-dasharray: 1; animation: th-draw 1.4s ease-out calc(var(--croot-speed, 1s) * .5 + var(--i, 0) * 150ms) both; }
+.croot-ready .croot-active .a-flow, .croot-ready.croot-overview .a-flow { animation: th-flow 1.2s linear infinite; }
+.croot-ready .croot-active .a-in, .croot-ready .croot-active .flow > li, .croot-ready .croot-active .timeline > li {
+  animation: th-in .7s cubic-bezier(.2, .7, .2, 1) calc(var(--croot-speed, 1s) * .5 + var(--i, 0) * 140ms) both;
+}
+.flow > li:nth-child(2), .timeline > li:nth-child(2) { --i: 1; }
+.flow > li:nth-child(3), .timeline > li:nth-child(3) { --i: 2; }
+.flow > li:nth-child(4), .timeline > li:nth-child(4) { --i: 3; }
+.flow > li:nth-child(5), .timeline > li:nth-child(5) { --i: 4; }
+.flow > li:nth-child(n+6), .timeline > li:nth-child(n+6) { --i: 5; }
+.croot-ready .croot-active .a-float { animation: th-float 6s ease-in-out infinite; }
+.croot-ready .croot-active .a-spin { animation: th-spin 20s linear infinite; transform-box: fill-box; transform-origin: center; }
+.croot-ready .croot-active .a-pulse { animation: th-pulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.croot-ready .croot-active .a-blink { animation: th-blink 1.4s steps(1) infinite; }
+
 /* ---------- HUD navigasi (opsional) ---------- */
 .hud {
   position: fixed;
@@ -357,11 +459,27 @@ td:first-child, th:first-child { width: 30%; }
   td { display: block; width: auto !important; padding: 4px 0; border: 0; }
   tr { display: block; padding: 14px 0; border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent); }
   .hud { font-size: 13px; }
+
+  /* BMC ponsel: 2 kolom x 5 baris (nilai melebar di atas) */
+  .bmc-vp { --croot-x: 0;    --croot-y: -295.8; --w: 2368; --h: 753.6; }
+  .bmc-cs { --croot-x: -151; --croot-y: -95.4;  --w: 1160; --h: 753.6; }
+  .bmc-cr { --croot-x: 151;  --croot-y: -95.4;  --w: 1160; --h: 753.6; }
+  .bmc-ch { --croot-x: -151; --croot-y: 105;    --w: 1160; --h: 753.6; }
+  .bmc-ka { --croot-x: 151;  --croot-y: 105;    --w: 1160; --h: 753.6; }
+  .bmc-kr { --croot-x: -151; --croot-y: 305.4;  --w: 1160; --h: 753.6; }
+  .bmc-kp { --croot-x: 151;  --croot-y: 305.4;  --w: 1160; --h: 753.6; }
+  .bmc-co { --croot-x: -151; --croot-y: 505.8;  --w: 1160; --h: 753.6; }
+  .bmc-rv { --croot-x: 151;  --croot-y: 505.8;  --w: 1160; --h: 753.6; }
+  .flow { flex-direction: column; gap: 40px; }
+  .flow > li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -40px; translate: -50% 0; }
+  .timeline { grid-auto-flow: row; gap: 28px; }
+  .timeline > li { padding: 0 0 0 44px; border-top: 0; border-left: 4px solid color-mix(in srgb, currentColor 30%, transparent); }
+  .timeline > li::before { left: -14px; top: 4px; }
 }
 
 /* Hormati pengaturan "kurangi gerakan" di sistem */
 @media (prefers-reduced-motion: reduce) {
-  .croot-ready .slide *, .croot-ready .slide::before, .croot-ready .slide::after { animation: none !important; }
+  .croot-ready .croot-node *, .croot-ready .croot-node::before, .croot-ready .croot-node::after { animation: none !important; }
   .hud { transition: none; }
 }
 
