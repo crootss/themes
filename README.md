@@ -62,12 +62,14 @@ Posisi node anak sebaiknya ditulis di CSS sebagai custom property supaya bisa be
 }
 ```
 
+Kalau kamu mengatur sendiri ukuran teks raksasa, kalikan dengan `--th-wide` supaya tetap muat di tema berfont lebar: `font-size: calc(240px * var(--th-wide));`.
+
 Tanpa JavaScript, semua slide tampil sebagai dokumen biasa yang tetap terbaca.
 
 ## Membuat tema baru
 
 1. Salin salah satu tema, misalnya `minimal.css`, dengan nama baru.
-2. Isi token `--th-*` di `:root`: warna halaman, font, 8 warna permukaan (`--th-s1` … `--th-s8` beserta `--th-on-*`), panel, tombol, dan aksen.
+2. Isi token `--th-*` di `:root`: warna halaman, font, 8 warna permukaan (`--th-s1` … `--th-s8` beserta `--th-on-*`), panel, tombol, dan aksen. Untuk font display yang lebar, turunkan `--th-wide` (default `1`).
 3. Tambahkan dekorasi khas lewat `::before` / `::after` pada `.cover`, `.center`, dan seterusnya.
 4. Cek di `demo/` untuk desktop dan ponsel (±390px).
 

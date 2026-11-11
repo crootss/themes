@@ -18,6 +18,9 @@
   --th-display-weight: 800;
   --th-display-tracking: -.03em;
   --th-display-leading: .98;
+  /* Pengali ukuran untuk teks raksasa; < 1 pada tema dengan font lebar.
+     Pakai di CSS sendiri: font-size: calc(240px * var(--th-wide)); */
+  --th-wide: 1;
   --th-text: system-ui, sans-serif;
   --th-mono: ui-monospace, Menlo, Consolas, monospace;
   --th-radius: 6px;

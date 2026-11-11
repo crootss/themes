@@ -20,6 +20,7 @@
   --th-display-weight: 800;
   --th-display-tracking: -.03em;
   --th-display-leading: 1;
+  --th-wide: .72; /* Syne sangat lebar */
   --th-text: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --th-mono: "Space Mono", ui-monospace, Menlo, Consolas, monospace;
   --th-radius: 10px;
