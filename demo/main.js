@@ -33,3 +33,16 @@ showPos();
 let saved = null;
 try { saved = localStorage.getItem('crootss-tema'); } catch {}
 setTheme(new URLSearchParams(location.search).get('tema') || saved || 'poster');
+
+// Bilah navigasi menghilang setelah penonton diam, muncul lagi saat mouse
+// bergerak atau layar disentuh (gaya .hud-idle di base.css).
+const hud = document.querySelector('.hud');
+let idleTimer = 0;
+function wakeHud() {
+  hud.classList.remove('hud-idle');
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => hud.classList.add('hud-idle'), 2500);
+}
+document.addEventListener('pointermove', wakeHud, { passive: true });
+document.addEventListener('pointerdown', wakeHud, { passive: true });
+wakeHud();

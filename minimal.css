@@ -132,3 +132,7 @@ kbd { border-width: 1.5px; border-bottom-width: 3px; border-radius: 6px; }
   .mega { font-size: 190px; }
   .croot-node.slide:not(.center)::after { left: 64px; right: 64px; }
 }
+
+/* Gerak dekorasi selama slide tampil (keyframes di base.css): pelan dan tenang */
+.croot-ready .center.croot-active::before { animation: th-spin 30s linear infinite; }
+.croot-ready .cover.croot-active::before { animation: th-float 9s ease-in-out infinite; }

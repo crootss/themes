@@ -54,6 +54,7 @@ Slide berukuran 1280×720 (16:9) di desktop dan 720×1280 (9:16) di layar ≤640
 | `btn`, `btn ghost`, `tag`, `sticker`, `key` | Tombol, label, stiker miring, tombol keyboard besar. |
 | `card`, `window` | Node anak 1280×720 yang bisa di-zoom; `window` dengan bilah jendela (`<p class="chrome"><i></i><i></i><i></i></p>`). |
 | `hud`, `hud-btn`, `hud-pos` | Bilah navigasi melayang (opsional). |
+| `hud-idle` | Pada `hud`: sembunyikan bilah saat penonton diam (dipasang JS-mu; contoh di `demo/main.js`). |
 
 Posisi node anak sebaiknya ditulis di CSS sebagai custom property supaya bisa berbeda di ponsel:
 
@@ -65,6 +66,10 @@ Posisi node anak sebaiknya ditulis di CSS sebagai custom property supaya bisa be
 ```
 
 Kalau kamu mengatur sendiri ukuran teks raksasa, kalikan dengan `--th-wide` supaya tetap muat di tema berfont lebar: `font-size: calc(240px * var(--th-wide));`.
+
+## Gerak
+
+Hanya slide aktif yang bergerak: isinya masuk bergiliran tepat sebelum kamera tiba, lalu `sticker`, `key`, dan dekorasi tema bergerak pelan selama slide tampil. Animasi memakai properti `translate`/`rotate`/`scale` (bukan `transform`) dan mati otomatis bila sistem meminta "kurangi gerakan". Keyframes `th-in`, `th-float`, `th-spin`, `th-wobble`, dan `th-blink` boleh dipakai ulang, misalnya `.croot-active .logo { animation: th-float 6s ease-in-out infinite; }`.
 
 Tanpa JavaScript, semua slide tampil sebagai dokumen biasa yang tetap terbaca.
 

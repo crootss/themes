@@ -138,3 +138,10 @@ body { background-size: 26px 26px; }
   .cover::before { right: -260px; bottom: -220px; }
   .cover::after { right: 60px; top: 150px; }
 }
+
+/* Gerak dekorasi selama slide tampil (keyframes di base.css) */
+.croot-ready .cover.croot-active::after { animation: th-spin 22s linear infinite; }
+.croot-ready .cover.croot-active::before,
+.croot-ready .center.croot-active::before,
+.croot-ready .slide.croot-active:not(.split):has(.mega)::after { animation: th-float 6s ease-in-out infinite; }
+.croot-ready .split.croot-active::after { animation: th-float 7s ease-in-out infinite; }

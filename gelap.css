@@ -134,3 +134,6 @@ h2 { font-size: 70px; max-width: 17ch; }
   h2, .split h2 { font-size: 62px; }
   .center h2 { font-size: 70px; }
 }
+
+/* Gerak dekorasi selama slide tampil (keyframes di base.css): lampu REC berkedip */
+.croot-ready .cover.croot-active::after { animation: th-blink 1.4s steps(1) infinite; }

@@ -292,6 +292,52 @@ td:first-child, th:first-child { width: 30%; }
 .hud-btn.on, .hud-btn[aria-pressed="true"] { background: var(--th-accent); color: var(--th-on-btn); }
 .hud-pos { min-width: 56px; text-align: center; font-variant-numeric: tabular-nums; }
 
+/* Seperti mode slideshow PowerPoint: bilah agak transparan, lalu hilang saat
+   penonton diam supaya tidak menutupi slide. JS memasang .hud-idle setelah
+   beberapa detik tanpa gerakan mouse/sentuhan dan melepasnya lagi saat ada
+   gerakan. Saat di-hover atau difokus keyboard, bilah selalu terlihat penuh. */
+.hud { opacity: .7; transition: opacity .35s, translate .35s; }
+.hud:hover, .hud:focus-within { opacity: 1; }
+.hud.hud-idle:not(:hover):not(:focus-within) { opacity: 0; translate: 0 12px; pointer-events: none; }
+
+/* ---------- Gerak: slide terasa hidup saat tampil ----------
+   Hanya di slide aktif dan hanya saat croot.js jalan (.croot-ready). Isi slide
+   masuk bergiliran setelah kamera hampir tiba (delay mengikuti --croot-speed).
+   Memakai properti `translate`/`rotate`/`scale`, bukan `transform`, supaya
+   tidak menimpa rotasi milik .paper/.sticker; node anak (.croot-node)
+   dilewati karena posisinya diatur transform croot.js. */
+@keyframes th-in { from { opacity: 0; translate: 0 32px; } }
+@keyframes th-wobble { 50% { rotate: 6deg; scale: 1.06; } }
+@keyframes th-press { 0%, 14%, 100% { translate: 0 0; } 7% { translate: 0 10px; } }
+@keyframes th-float { 50% { translate: 0 -14px; } }
+@keyframes th-spin { to { rotate: 360deg; } }
+@keyframes th-blink { 50% { opacity: .25; } }
+
+.croot-ready .slide.croot-active > :not(.croot-node),
+.croot-ready .slide.split.croot-active > div:first-child > * {
+  --th-i: 0;
+  animation: th-in .7s cubic-bezier(.2, .7, .2, 1) both;
+  animation-delay: calc(var(--croot-speed, 1s) * .5 + var(--th-i) * 90ms);
+}
+.croot-ready .slide.split.croot-active > div:first-child { animation: none; }
+.croot-ready .slide.croot-active > :nth-child(2),
+.croot-ready .slide.split.croot-active > div:first-child > :nth-child(2) { --th-i: 1; }
+.croot-ready .slide.croot-active > :nth-child(3),
+.croot-ready .slide.split.croot-active > div:first-child > :nth-child(3) { --th-i: 2; }
+.croot-ready .slide.croot-active > :nth-child(4),
+.croot-ready .slide.split.croot-active > div:first-child > :nth-child(4) { --th-i: 3; }
+.croot-ready .slide.croot-active > :nth-child(n+5),
+.croot-ready .slide.split.croot-active > div:first-child > :nth-child(n+5) { --th-i: 4; }
+/* Panel kode di kolom kanan split masuk setelah teks */
+.croot-ready .slide.split.croot-active > :nth-child(2) { --th-i: 3; }
+
+/* Gerak kecil yang terus berjalan selama slide tampil */
+.croot-ready .croot-active .sticker { animation: th-wobble 3.2s ease-in-out infinite; }
+.croot-ready .croot-active .cols > :nth-child(1) .key { animation: th-press 4.5s ease-in-out 1s infinite; }
+.croot-ready .croot-active .cols > :nth-child(2) .key { animation: th-press 4.5s ease-in-out 2.5s infinite; }
+.croot-ready .croot-active .cols > :nth-child(3) .key { animation: th-press 4.5s ease-in-out 4s infinite; }
+.croot-ready .croot-active .cols > :nth-child(4) .key { animation: th-press 4.5s ease-in-out 5.5s infinite; }
+
 /* ---------- Ponsel: slide potret 9:16 ---------- */
 @media (max-width: 640px) {
   .croot-viewport { --croot-node-width: 720px; }
@@ -311,6 +357,12 @@ td:first-child, th:first-child { width: 30%; }
   td { display: block; width: auto !important; padding: 4px 0; border: 0; }
   tr { display: block; padding: 14px 0; border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent); }
   .hud { font-size: 13px; }
+}
+
+/* Hormati pengaturan "kurangi gerakan" di sistem */
+@media (prefers-reduced-motion: reduce) {
+  .croot-ready .slide *, .croot-ready .slide::before, .croot-ready .slide::after { animation: none !important; }
+  .hud { transition: none; }
 }
 
 /* ---------- Tanpa JS: dokumen biasa ---------- */
