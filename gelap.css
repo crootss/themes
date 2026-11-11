@@ -128,7 +128,8 @@ h2 { font-size: 70px; max-width: 17ch; }
 .window .chrome { background: #1b1b24; }
 
 @media (max-width: 640px) {
-  .cover h1 { font-size: 140px; }
+  /* Syne sangat lebar: 7 huruf di 140px sudah melebihi slide 720px */
+  .cover h1 { font-size: 100px; }
   .mega { font-size: 150px; }
   h2, .split h2 { font-size: 62px; }
   .center h2 { font-size: 70px; }
