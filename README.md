@@ -80,7 +80,7 @@ Big picture presentasi biasanya berupa diagram. Semua komponen berikut murni CSS
 | `flow`, `timeline` | Pada `<ol>`: alur berpanah, garis waktu. |
 | `a-draw`, `a-flow`, `a-in`, `a-float`, `a-spin`, `a-pulse`, `a-blink` | Animasi yang hanya berjalan di node aktif (`a-draw` butuh `pathLength="1"`). |
 
-Contoh lengkap ada di `demo/` (slide Diagram, Business Model Canvas, Alur dan waktu) dan di https://crootss.if.co.id/docs/big-picture/.
+Contoh lengkap ada di `demo/` (slide Diagram, Business Model Canvas, Alur dan waktu, System context, Rich picture) dan di https://crootss.if.co.id/docs/big-picture/.
 
 ## Gerak
 
