@@ -148,6 +148,9 @@ pre code { font-size: 1em; }
 pre b { color: var(--th-panel-accent); font-weight: 700; }
 
 table { width: 100%; border-collapse: collapse; font-size: 28px; }
+/* table.matrix: tabel banyak kolom yang tetap grid di ponsel */
+.matrix td, .matrix th { padding-right: 16px; }
+.matrix td:first-child, .matrix th:first-child { width: auto; }
 td, th { padding: 14px 0; border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent); text-align: left; vertical-align: top; }
 td:first-child, th:first-child { width: 30%; }
 
@@ -215,6 +218,12 @@ td:first-child, th:first-child { width: 30%; }
 .croot-node.card { padding: 80px 96px; font-size: 50px; line-height: 1.25; }
 .croot-node.card h3 { font-size: 150px; margin-bottom: 48px; }
 .croot-node.window { padding: 0 64px 56px; font-size: 30px; }
+/* Varian .figure: judul kecil, gambar/SVG mengisi sisa kartu atau jendela. */
+.croot-node.card.figure, .croot-node.window.figure { display: flex; flex-direction: column; }
+.croot-node.card.figure { padding: 48px 56px; font-size: 30px; }
+.croot-node.card.figure h3 { flex: none; margin: 0 0 24px; font-size: 52px; }
+.figure > :is(img, svg, video, picture) { display: block; flex: 1; min-height: 0; width: 100%; object-fit: contain; }
+.figure > p { flex: none; margin: 16px 0 0; font-size: 24px; opacity: .8; }
 /* Anak sedikit di depan induknya: anak yang sebidang dengan induk yang
    diputar bisa tergambar di belakang background induk. */
 .slide > .croot-node { --croot-z: 2; }
@@ -235,6 +244,10 @@ td:first-child, th:first-child { width: 30%; }
 /* Sampul: judul besar di kiri */
 .cover h1 { margin: 40px 0 8px -8px; }
 .cover .lead { margin-top: 16px; }
+/* Penulis/afiliasi dan petunjuk navigasi: ikut alur teks, tidak saling tabrak */
+.byline { margin: 40px 0 0; font-size: 26px; line-height: 1.4; }
+.byline b { display: block; font-size: 32px; }
+.hint { margin: 32px 0 0; font-size: 20px; opacity: .8; }
 
 /* Dua kolom: teks + panel/gambar */
 .split {
@@ -278,8 +291,10 @@ td:first-child, th:first-child { width: 30%; }
 .dg-edge.dashed { stroke-dasharray: 22 16; }
 .dg-head { fill: currentColor; opacity: .6; }   /* isi <marker> untuk mata panah */
 .dg-box { fill: var(--surface, var(--th-s2)); stroke: currentColor; stroke-width: 4; }
-.dg-label rect { fill: var(--th-panel); }
-.dg-label text { fill: var(--th-on-panel); font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+/* Pil label memakai warna teks slide dan teksnya warna latar, jadi selalu
+   kontras dengan slide (panel tema bisa sewarna dengan slide gelap). */
+.dg-label rect { fill: currentColor; }
+.dg-label text { fill: var(--surface, var(--th-page)); font-weight: 600; text-anchor: middle; dominant-baseline: central; }
 
 /* Business Model Canvas. Setiap blok adalah .croot-node anak berkelas bmc-*:
    kp (mitra), ka (aktivitas), kr (sumber daya), vp (nilai), cr (relasi),
@@ -329,6 +344,9 @@ td:first-child, th:first-child { width: 30%; }
 .flow > li::before { content: counter(flow, decimal-leading-zero); display: block; margin-bottom: 10px; font: 700 18px var(--th-mono); opacity: .6; }
 .flow > li b { display: block; margin-bottom: 6px; font: var(--th-display-weight) 32px/1.1 var(--th-display); }
 .flow > li:not(:last-child)::after { content: "→"; position: absolute; right: -46px; top: 50%; translate: 0 -50%; font: 700 34px var(--th-text); opacity: .6; }
+/* .flow.vertical: alur ke bawah (di ponsel semua .flow otomatis vertikal) */
+.flow.vertical { flex-direction: column; gap: 40px; }
+.flow.vertical > li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -40px; translate: -50% 0; }
 
 /* Garis waktu: titik di atas garis horizontal */
 .timeline { display: grid; grid-auto-columns: 1fr; grid-auto-flow: column; gap: 32px; margin: 56px 0 0; padding: 0; list-style: none; }
@@ -456,8 +474,11 @@ td:first-child, th:first-child { width: 30%; }
   /* Tombol keyboard di samping teksnya supaya tiga baris muat */
   .cols > div:has(.key) { display: grid; grid-template-columns: 170px 1fr; gap: 28px; align-items: center; }
   .cols .key { height: 130px; margin: 0; font-size: 48px; }
-  td { display: block; width: auto !important; padding: 4px 0; border: 0; }
-  tr { display: block; padding: 14px 0; border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent); }
+  /* Tabel dua kolom ditumpuk per baris; table.matrix tetap berbentuk grid */
+  table:not(.matrix) td { display: block; width: auto !important; padding: 4px 0; border: 0; }
+  table:not(.matrix) tr { display: block; padding: 14px 0; border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent); }
+  .matrix { font-size: 22px; }
+  .matrix td, .matrix th { padding: 10px 12px 10px 0; }
   .hud { font-size: 13px; }
 
   /* BMC ponsel: 2 kolom x 5 baris (nilai melebar di atas) */

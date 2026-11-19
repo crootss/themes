@@ -44,6 +44,7 @@ Slide berukuran 1280×720 (16:9) di desktop dan 720×1280 (9:16) di layar ≤640
 | `slide` | Wajib di setiap slide (bersama `croot-node`). `tall` = lebih tinggi (900px / 1800px di ponsel). |
 | `t-1` … `t-8` | Warna permukaan slide atau kartu. Tiap tema punya 8 warna sendiri. |
 | `cover` | Sampul: judul `h1` raksasa + dekorasi. |
+| `byline`, `hint` | Di sampul: penulis/afiliasi (`<p class="byline"><b>Nama</b>Afiliasi</p>`) dan petunjuk navigasi kecil. Keduanya ikut alur teks, jadi tidak saling tabrak. |
 | `split` | Dua kolom: teks dan panel/kode. |
 | `center` | Satu pernyataan besar di tengah. |
 | `cols` | Kolom sejajar (2–4 `div`). |
@@ -53,6 +54,8 @@ Slide berukuran 1280×720 (16:9) di desktop dan 720×1280 (9:16) di layar ≤640
 | `panel`, `paper` | Kotak kode atau kutipan; `paper` bergaya khas tiap tema. |
 | `btn`, `btn ghost`, `tag`, `sticker`, `key` | Tombol, label, stiker miring, tombol keyboard besar. |
 | `card`, `window` | Node anak 1280×720 yang bisa di-zoom; `window` dengan bilah jendela (`<p class="chrome"><i></i><i></i><i></i></p>`). |
+| `figure` | Pada `card`/`window`: judul `h3` kecil, lalu `<img>`/`<svg>`/`<video>` mengisi sisa kartu; `<p>` sesudahnya jadi keterangan. |
+| `matrix` | Pada `<table>`: tabel banyak kolom yang tetap berbentuk grid di ponsel (tabel biasa ditumpuk per baris di ≤640px). |
 | `hud`, `hud-btn`, `hud-pos` | Bilah navigasi melayang (opsional). |
 | `hud-idle` | Pada `hud`: sembunyikan bilah saat penonton diam (dipasang JS-mu; contoh di `demo/main.js`). |
 
@@ -75,12 +78,12 @@ Big picture presentasi biasanya berupa diagram. Semua komponen berikut murni CSS
 | :-- | :-- |
 | `dg` | Pada `<svg>`: wadah diagram bebas (concept map, system context, rich picture). |
 | `dg-edge` (+`dotted`/`dashed`) | Garis/panah `<path>`; jarak titik lewat `--dg-gap`. |
-| `dg-box`, `dg-label`, `dg-head` | Kotak, label pil (`<g>` berisi `<rect>` + `<text>`), isi `<marker>` mata panah. |
+| `dg-box`, `dg-label`, `dg-head` | Kotak, label pil (`<g>` berisi `<rect>` + `<text>`; berwarna teks slide supaya kontras di slide terang maupun gelap), isi `<marker>` mata panah. |
 | `bmc` + `bmc-kp`…`bmc-rv` | Business Model Canvas: 9 blok node anak yang bisa di-zoom, posisinya sudah diatur (desktop dan ponsel). |
-| `flow`, `timeline` | Pada `<ol>`: alur berpanah, garis waktu. |
+| `flow`, `timeline` | Pada `<ol>`: alur berpanah, garis waktu. `flow vertical` = alur ke bawah (di ponsel semua `flow` vertikal). |
 | `a-draw`, `a-flow`, `a-in`, `a-float`, `a-spin`, `a-pulse`, `a-blink` | Animasi yang hanya berjalan di node aktif (`a-draw` butuh `pathLength="1"`). |
 
-Contoh lengkap ada di `demo/` (slide Diagram, Business Model Canvas, Alur dan waktu, System context, Rich picture) dan di https://crootss.if.co.id/docs/big-picture/.
+Contoh lengkap ada di `demo/` (slide Diagram, Business Model Canvas, Alur dan waktu, System context, Rich picture, Tabel matriks, Kartu gambar, Alur vertikal) dan di https://crootss.if.co.id/docs/big-picture/.
 
 ## Gerak
 

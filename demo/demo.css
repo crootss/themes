@@ -18,3 +18,9 @@
   #kartu-gelap   { --croot-x: 0; --croot-y: 190;  --croot-scale: .36; }
   #kartu-minimal { --croot-x: 0; --croot-y: 470;  --croot-scale: .36; }
 }
+
+/* Kartu gambar di slide "Kartu gambar" */
+#kartu-figur { --croot-y: 110; --croot-scale: .38; }
+@media (max-width: 640px) {
+  #kartu-figur { --croot-y: 100; --croot-scale: .45; }
+}
