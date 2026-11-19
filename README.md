@@ -15,9 +15,9 @@ Dokumentasi: https://crootss.if.co.id/docs/tema/
 Muat tema **setelah** `crootss.min.css`. Font Google ikut dimuat otomatis.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.5.0/crootss.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.6.0/crootss.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/themes@v0.6.0/poster.min.css">
-<script type="module" src="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.5.0/croot.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.6.0/croot.min.js"></script>
 ```
 
 Ganti `poster` dengan `gelap` atau `minimal`. Selalu pin versi (lihat [Releases](https://github.com/crootss/themes/releases)), jangan `@latest`.
