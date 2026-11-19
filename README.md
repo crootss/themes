@@ -16,7 +16,7 @@ Muat tema **setelah** `crootss.min.css`. Font Google ikut dimuat otomatis.
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.6.0/crootss.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/themes@v0.6.0/poster.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootss/themes@v0.6.1/poster.min.css">
 <script type="module" src="https://cdn.jsdelivr.net/gh/crootss/crootss@v0.6.0/croot.min.js"></script>
 ```
 
