@@ -54,6 +54,7 @@ Slide berukuran 1280×720 (16:9) di desktop dan 720×1280 (9:16) di layar ≤640
 | `panel`, `paper` | Kotak kode atau kutipan; `paper` bergaya khas tiap tema. |
 | `btn`, `btn ghost`, `tag`, `sticker`, `key` | Tombol, label, stiker miring, tombol keyboard besar. |
 | `card`, `window` | Node anak 1280×720 yang bisa di-zoom; `window` dengan bilah jendela (`<p class="chrome"><i></i><i></i><i></i></p>`). |
+| `portrait` | Pada `card`/`window`: di ponsel menjadi potret 720×1280 sehingga memenuhi layar saat di-zoom. Kartu saudara yang tidak aktif otomatis hampir disembunyikan di ponsel. |
 | `figure` | Pada `card`/`window`: judul `h3` kecil, lalu `<img>`/`<svg>`/`<video>` mengisi sisa kartu; `<p>` sesudahnya jadi keterangan. |
 | `matrix` | Pada `<table>`: tabel banyak kolom yang tetap berbentuk grid di ponsel (tabel biasa ditumpuk per baris di ≤640px). |
 | `hud`, `hud-btn`, `hud-pos` | Bilah navigasi melayang (opsional). |
@@ -90,6 +91,18 @@ Contoh lengkap ada di `demo/` (slide Diagram, Business Model Canvas, Alur dan wa
 Hanya slide aktif yang bergerak: isinya masuk bergiliran tepat sebelum kamera tiba, lalu `sticker`, `key`, dan dekorasi tema bergerak pelan selama slide tampil. Animasi memakai properti `translate`/`rotate`/`scale` (bukan `transform`) dan mati otomatis bila sistem meminta "kurangi gerakan". Keyframes `th-in`, `th-float`, `th-spin`, `th-wobble`, dan `th-blink` boleh dipakai ulang, misalnya `.croot-active .logo { animation: th-float 6s ease-in-out infinite; }`.
 
 Tanpa JavaScript, semua slide tampil sebagai dokumen biasa yang tetap terbaca.
+
+## Versi yang cocok
+
+Tema diberi versi terpisah dari [library crootss](https://github.com/crootss/crootss). Pasangan yang sudah dipakai bersama:
+
+| themes | crootss |
+| :-- | :-- |
+| v0.6.0 | v0.5.0 |
+| v0.5.0, v0.4.0 | v0.4.0 |
+| v0.3.0, v0.2.1, v0.2.0 | v0.3.0 |
+
+Daftar kelas baru dan perubahan setiap rilis ada di [Releases](https://github.com/crootss/themes/releases).
 
 ## Membuat tema baru
 

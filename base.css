@@ -478,6 +478,11 @@ td:first-child, th:first-child { width: 30%; }
   table:not(.matrix) td { display: block; width: auto !important; padding: 4px 0; border: 0; }
   table:not(.matrix) tr { display: block; padding: 14px 0; border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent); }
   .matrix { font-size: 22px; }
+  /* Kartu 16:9 di layar potret: saat satu kartu di-zoom, kartu saudaranya
+     yang terlihat di atas/bawah layar hampir disembunyikan. */
+  .croot-ready:not(.croot-overview) .croot-node:has(> .croot-node.croot-active) > .croot-node:not(.croot-active) { opacity: .06; }
+  /* .portrait: kartu/jendela potret 720x1280 khusus ponsel, memenuhi layar saat di-zoom */
+  .croot-node.card.portrait, .croot-node.window.portrait { width: 720px; height: 1280px; }
   .matrix td, .matrix th { padding: 10px 12px 10px 0; }
   .hud { font-size: 13px; }
 
